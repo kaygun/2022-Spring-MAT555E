@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Atabey Kaygun">
+  <title>Math 555E</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/moon.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Math 555E</h1>
+  <p class="author">Atabey Kaygun</p>
+  <p class="date">Tuesday, March 15, 2022</p>
+</section>
+
+<section>
+<section id="model-building-via-optimization" class="title-slide slide level1">
+<h1>Model Building via Optimization</h1>
+
+</section>
+<section id="fit-cost-and-penalty" class="slide level2">
+<h2>Fit, Cost and Penalty</h2>
+<ul>
+<li class="fragment">Larger the fit, larger the similarity, smaller the penalty</li>
+<li class="fragment">Larger the cost, smaller the similarity, larger the penalty</li>
+</ul>
+<p><img data-src="image-1.png" /> </p>
+</section>
+<section id="distance-measures" class="slide level2">
+<h2>Distance measures</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(L^p\)</span>-distance for points in <span class="math inline">\(\mathbb{R}^n\)</span>
+<div class="fragment">
+<p><span class="math display">\[\sum_x\|f(x)-g(x)\|_p\]</span></p>
+</div></li>
+<li class="fragment">Kullback-Leibler-divergence for distributions
+<div class="fragment">
+<p><span class="math display">\[ \sum_x p(x) \log (p(x)/q(x)) \]</span></p>
+</div></li>
+</ul>
+</section>
+<section id="similarity-measures" class="slide level2">
+<h2>Similarity measures</h2>
+<ul>
+<li class="fragment">Cosine similarity
+<div class="fragment">
+<p><span class="math display">\[Sim(x,y) = (x\cdot y)/\|x\|\|y\|\]</span></p>
+</div></li>
+</ul>
+</section>
+<section id="demo" class="slide level2">
+<h2>Demo</h2>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="supervised-learning" class="title-slide slide level1">
+<h1>Supervised Learning</h1>
+
+</section>
+<section id="data-and-model" class="slide level2">
+<h2>Data and model</h2>
+<ul>
+<li class="fragment">Data set <span class="math inline">\(D\)</span> consists of <span class="math inline">\((x,y)\)</span>
+<ul>
+<li class="fragment"><span class="math inline">\(x\)</span> input</li>
+<li class="fragment"><span class="math inline">\(y\)</span> expected output</li>
+</ul></li>
+<li class="fragment">Model is a function <span class="math inline">\(f(x,\theta)\)</span>
+<div class="fragment">
+<p><span class="math display">\[  Cost(\theta) =  \sum_x dist(f(x,\theta),y) \]</span></p>
+</div></li>
+<li class="fragment">Best model is one where Cost is minimized.</li>
+</ul>
+</section>
+<section id="optimization" class="slide level2">
+<h2>Optimization</h2>
+<p>Gradient descent</p>
+<ul>
+<li class="fragment"><span class="math inline">\(F\colon \mathbb{R}^m\to \mathbb{R}\)</span>
+<ul>
+<li class="fragment">We want <span class="math inline">\(argmin_{\theta} F(\theta)\)</span></li>
+<li class="fragment">We find it iteratively
+<div class="fragment">
+<p><span class="math display">\[\theta_{n+1} = \theta_n + \gamma \nabla F(\theta_n)\]</span></p>
+</div></li>
+</ul></li>
+<li class="fragment">Optimal <span class="math inline">\(\theta\)</span> gives best fitting model.</li>
+</ul>
+</section>
+<section id="regularization" class="slide level2">
+<h2>Regularization</h2>
+<ul>
+<li class="fragment">In <em>Regularization</em> add a penalty term into the Cost function
+<div class="fragment">
+<p><span class="math display">\[  Cost(\theta) =  \Psi(\theta) + \sum_x dist(f(x,\theta),y) \]</span></p>
+</div></li>
+<li class="fragment">Occam’s Razor = Optimal <span class="math inline">\(\theta\)</span> with minimal penalty</li>
+</ul>
+</section>
+<section id="example" class="slide level2">
+<h2>Example</h2>
+</section>
+<section class="slide level2">
+
+<h3 id="regression">Regression</h3>
+<ul>
+<li class="fragment">Data: <span class="math inline">\(X,y=(x_1^{(i)},\ldots,x_n^{(i)};y^{(i)})\)</span></li>
+<li class="fragment">Cost: <span class="math inline">\(\|y-\beta X\|\)</span></li>
+<li class="fragment"><span class="math inline">\(\ell_p\)</span>-regularization: <span class="math inline">\(\|y-\beta X\| + \lambda \|\beta\|_p\)</span>
+<ul>
+<li class="fragment"><span class="math inline">\(p=1\)</span>: Lasso</li>
+<li class="fragment"><span class="math inline">\(p=2\)</span>: Ridge</li>
+<li class="fragment"><span class="math inline">\(p=1\)</span> and <span class="math inline">\(p=2\)</span>: Elastic Net</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="demo-1">Demo</h3>
+</section>
+<section class="slide level2">
+
+<h3 id="k-means">K-means</h3>
+<ul>
+<li class="fragment">Data: <span class="math inline">\(X=(x_1^{(i)},\ldots,x_m^{(i)})\subseteq \mathbb{R}^m\)</span></li>
+<li class="fragment"><span class="math inline">\(p\colon X\to \{y_1,\ldots,y_k\}\subseteq \mathbb{R}^m\)</span>
+<div class="fragment">
+<p><span class="math display">\[argmin_p \sum_x \|x-p(x)\|\]</span></p>
+</div></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="demo-2">Demo</h3>
+</section>
+<section class="slide level2">
+
+</section></section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: false,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'cube',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
