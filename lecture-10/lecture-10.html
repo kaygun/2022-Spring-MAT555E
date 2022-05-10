@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Atabey Kaygun">
+  <title>Math 555E</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/white.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Math 555E</h1>
+  <p class="subtitle">Neural Networks</p>
+  <p class="author">Atabey Kaygun</p>
+  <p class="date">Tuesday, May 10, 2022</p>
+</section>
+
+<section id="neural-networks" class="slide level1">
+<h1>Neural Networks</h1>
+<p>Neural networks consists of perceptrons linked together on a
+computation graph.</p>
+</section>
+<section class="slide level1">
+
+<h2 id="perceptron">Perceptron</h2>
+<p>The fundamental unit of a neural network is a perceptron.</p>
+<figure>
+<img data-src="images/perceptron.png" alt="perceptron" />
+<figcaption aria-hidden="true">perceptron</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<h2 id="perceptron-1">Perceptron</h2>
+<p>A perceptron</p>
+<ol type="1">
+<li class="fragment">takes its vector input</li>
+<li class="fragment">multiplies it with a weight</li>
+<li class="fragment">adds a bias</li>
+<li class="fragment">pass it through an activation function</li>
+</ol>
+<p><span
+class="math display"><em>f</em>(<em>α</em>⋅<em>v</em>+<em>β</em>)</span></p>
+</section>
+<section class="slide level1">
+
+<h2 id="perceptron-2">Perceptron</h2>
+<p>This should look, feel and sound familiar because this is logistic
+regression.</p>
+</section>
+<section class="slide level1">
+
+<h2 id="computation-graph">Computation Graph</h2>
+<figure>
+<img data-src="images/computation_graph.png" alt="computation graph" />
+<figcaption aria-hidden="true">computation graph</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<h2 id="computation-graph-1">Computation Graph</h2>
+<p>A computation graph is a network of perceptrons. Computation from
+input to output is called <strong>forward propagation</strong>.</p>
+</section>
+<section class="slide level1">
+
+<h2 id="backward-propagation">Backward Propagation</h2>
+<p>The weights in individual perceptrons in a computation graph are
+initially set randomly.</p>
+</section>
+<section class="slide level1">
+
+<h2 id="backward-propagation-1">Backward Propagation</h2>
+<figure>
+<img data-src="images/backward_propagation.png"
+alt="backward propagation" />
+<figcaption aria-hidden="true">backward propagation</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<h2 id="backward-propagation-2">Backward Propagation</h2>
+<p>For each input:</p>
+<ul>
+<li class="fragment">we calculate the error</li>
+<li class="fragment">we push it backward</li>
+<li class="fragment">update the weights to counter-balance the
+error</li>
+</ul>
+</section>
+<section id="types-of-neural-networks" class="slide level1">
+<h1>Types of Neural Networks</h1>
+<p>Types of the Neural Networks is determined by its inputs:</p>
+</section>
+<section class="slide level1">
+
+<h2 id="input-types">Input types</h2>
+<ul>
+<li class="fragment">Vector inputs</li>
+<li class="fragment">Matrix inputs</li>
+<li class="fragment">Time series inputs</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h2 id="network-types">Network types</h2>
+<ul>
+<li class="fragment">Ordinary Neural Networks</li>
+<li class="fragment">Convolutional Neural Networks</li>
+<li class="fragment">Recurrent Neural Networks</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<h3 id="ordinary-neural-networks">Ordinary Neural Networks</h3>
+<p>Just a computational graph given by a network of perceptrons.</p>
+<p><img data-src="images/computation_graph.png" /></p>
+</section>
+<section class="slide level1">
+
+<h3 id="convolutional-networks">Convolutional Networks</h3>
+<p>Convolutional networks work well with matrix inputs such as
+images.</p>
+<p><img data-src="images/convolutional_neural_network.png" /></p>
+<p>Source: <a
+href="https://shafeentejani.github.io/2016-12-20/convolutional-neural-nets/">Machines
+that can see: Convolutional Neural Networks</a></p>
+</section>
+<section class="slide level1">
+
+<h3 id="convolution">Convolution</h3>
+<p><img src="images/convolution.png" height="300px"></p>
+<p>Source: <a
+href="https://jhui.github.io/2017/03/16/CNN-Convolutional-neural-network/">Convolutional
+neural networks (CNN) tutorial</a></p>
+</section>
+<section class="slide level1">
+
+<h3 id="recurrent-neural-networks">Recurrent Neural Networks</h3>
+<p><img src="images/recurrent.png"></p>
+<p>Source: <a
+href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/">Understanding
+LSTM Networks</a></p>
+</section>
+<section class="slide level1">
+
+<h2 id="demo">Demo</h2>
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
